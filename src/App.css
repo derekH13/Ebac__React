@@ -1,16 +1,33 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  height: 100vh;
+  width: 100%;
   text-align: center;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7d947e1c-d377-48d9-ab3e-6cfc41f6faa7/dd6zsqk-80e4e337-0d27-4883-9c64-caa93efa56fd.png/v1/fill/w_1177,h_679/forest_by_gydw1n_dd6zsqk-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9ODY1IiwicGF0aCI6IlwvZlwvN2Q5NDdlMWMtZDM3Ny00OGQ5LWFiM2UtNmNmYzQxZjZmYWE3XC9kZDZ6c3FrLTgwZTRlMzM3LTBkMjctNDg4My05YzY0LWNhYTkzZWZhNTZmZC5wbmciLCJ3aWR0aCI6Ijw9MTUwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.Qu7Jif2pNMejcOj9jd9MnK01ldCiPDU-jULi65mTr94');
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
 }
 
 form{
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  background-color: #adadad;
-  border-radius: 10px;
+  align-items: start;
+  padding: 30px;
+  background-color: #0f0f0f;
+  border-radius: 20px;
+  width: 300px;
+  box-shadow: 5px 8px 13px rgba(0, 0, 0, 0.404) ;
+  height: max-content;
+}
+
+form h1{
+  font-size: 28px;
+  color: white;
+  margin-bottom: 24px;
 }
 
 form input{
@@ -18,26 +35,46 @@ form input{
   width: 300px;
   height: 40px;
   border-radius: 10px;
-  margin-top: 12px;
+  margin-top: 2px;
+  margin-bottom: 12px;
+  color: #0f0f0f;
+  font-weight: 500;
+  padding: 0px 5px;
+  font-size: 20px;
 }
 
 form label,
 form p,
-form input,
 form button{
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   font-size: 20px;
   font-weight: 500;
 }
 
-form p{
-  background-color: green;
+
+p{
+  position: absolute;
+  top: 120px;
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+  font-weight: 600;
+  padding: 20px;
+  background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
   border-radius: 10px;
-  padding: 5px 0px;
+  margin: 0 auto;
+  box-shadow: 5px 8px 13px rgba(0, 0, 0, 0.404) ;
 }
 
 
 form button{
+  background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
   margin-top: 2rem;
   height: 50px;
+  color: #0f0f0f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
+
+

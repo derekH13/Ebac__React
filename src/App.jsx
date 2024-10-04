@@ -1,86 +1,73 @@
-
-
-import { useState } from 'react'
-import './App.css'
-import { useRef } from 'react'
+import { useState, useRef } from 'react';
+import './App.css';
 
 function App() {
+  const peso = useRef(0);
+  const altura = useRef(0);
+  const [result, setResult] = useState('');
 
-  const peso = useRef(0)
-  const altura = useRef(0)
-  const [result, setResult] = useState()
+  const calcularIMC = (e) => {
+    e.preventDefault();
+    
+    const pesoValue = parseFloat(peso.current.value);
+    const alturaValue = parseFloat(altura.current.value);
 
-  function calcularIMC(e){
-
-      e.preventDefault()
-
-      posicaoTable(peso.current / altura.current)
-  }
-
-
-  function posicaoTable(IMC){
-    if(IMC < 18.5){
-      setResult(`${IMC}, você esta abaixo do peso`)
-
-    }else if(IMC > 18.5 && IMC < 24.9){
-      setResult(`${IMC}, Peso adequado`)
-
-    }else if(IMC > 25.0 && IMC < 29.9){
-      setResult(`${IMC}, Sobrepeso`)
-
-    }else if(IMC > 30.0 && IMC < 34.9){
-      setResult(`${IMC}, Obesidade grau I`)
-
-    }else if(IMC > 35.0 && IMC <  39.9){
-      setResult(`${IMC}, Obesidade grau II`)
-
-    }else if(IMC > 40.0){
-      setResult(`${IMC}, Obesidade grau III ou mórbida`)
-
+    if (isNaN(pesoValue) || isNaN(alturaValue) || alturaValue === 0) {
+      setResult('Por favor, insira valores válidos para peso e altura.');
+      return;
     }
 
+    const imc = pesoValue / (alturaValue * alturaValue);
+    posicaoTable(imc);
+  };
 
-
-
-  }
-
-  console.log(result);
-  
-
-
+  const posicaoTable = (imc) => {
+    if (imc < 18.5) {
+      setResult(`${imc.toFixed(2)}, você está abaixo do peso`);
+    } else if (imc < 24.9) {
+      setResult(`${imc.toFixed(2)}, peso adequado`);
+    } else if (imc < 29.9) {
+      setResult(`${imc.toFixed(2)}, sobrepeso`);
+    } else if (imc < 34.9) {
+      setResult(`${imc.toFixed(2)}, obesidade grau I`);
+    } else if (imc < 39.9) {
+      setResult(`${imc.toFixed(2)}, obesidade grau II`);
+    } else {
+      setResult(`${imc.toFixed(2)}, obesidade grau III ou mórbida`);
+    }
+  };
 
   return (
     <>
-      <form
-      onSubmit={(e) => calcularIMC(e)}
-      action="">
-
-        <label htmlFor="peso">Peso</label>
-        <input
-        onChange={(e) => peso.current = e.target.value}
-        type="number" id='peso'/>
-
+      {result && (
+        <p>Resultado do seu IMC: {result}</p>
+      )}
+      <form onSubmit={calcularIMC}>
+        <h1>CALCULADORA IMC</h1>
         
-        <label htmlFor="Altura">Altura</label>
+        <label htmlFor="peso">Peso (kg)</label>
         <input
-        onChange={(e) => altura.current = e.target.value}
-        type="number" id='Altura'/>
+          type="number"
+          ref={peso}
+          id="peso"
+          placeholder="Peso"
+          required
+        />
 
-
-        {
-          result && (
-            <p>resultado do seu IMC: {result} <br />
-            
-            </p>
-          )
-        }
-
+        <label htmlFor="altura">Altura (m)</label>
+        <input
+          type="number"
+          step="0.01"
+          ref={altura}
+          id="altura"
+          placeholder="Altura"
+          required
+        />
 
         <button type="submit">Calcular</button>
-
       </form>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
