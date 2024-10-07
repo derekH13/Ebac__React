@@ -1,18 +1,18 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
-  const peso = useRef(0);
-  const altura = useRef(0);
+  const [peso, setPeso] = useState('');
+  const [altura, setAltura] = useState('');
   const [result, setResult] = useState('');
 
   const calcularIMC = (e) => {
     e.preventDefault();
-    
-    const pesoValue = parseFloat(peso.current.value);
-    const alturaValue = parseFloat(altura.current.value);
 
-    if (isNaN(pesoValue) || isNaN(alturaValue) || alturaValue === 0) {
+    const pesoValue = parseFloat(peso);
+    const alturaValue = parseFloat(altura);
+
+    if (isNaN(pesoValue) || isNaN(alturaValue) || alturaValue <= 0 || pesoValue <= 0) {
       setResult('Por favor, insira valores válidos para peso e altura.');
       return;
     }
@@ -44,11 +44,12 @@ function App() {
       )}
       <form onSubmit={calcularIMC}>
         <h1>CALCULADORA IMC</h1>
-        
+
         <label htmlFor="peso">Peso (kg)</label>
         <input
           type="number"
-          ref={peso}
+          value={peso}
+          onChange={(e) => setPeso(e.target.value)}
           id="peso"
           placeholder="Peso"
           required
@@ -58,7 +59,8 @@ function App() {
         <input
           type="number"
           step="0.01"
-          ref={altura}
+          value={altura}
+          onChange={(e) => setAltura(e.target.value)}
           id="altura"
           placeholder="Altura"
           required

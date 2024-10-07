@@ -1,0 +1,10 @@
+root = true
+
+
+[*]
+indent_style = space     # tipo de identação
+indent_size = 2          # tamanho da identação
+end_of_line = lf
+charset = utf-8          #code de characters
+trim_trailing_whitespace = true       #oibriga a colocar espaços depois de var/simbolos
+insert_final_newline = true           #finalizar o arquivo com uma linha em branco
